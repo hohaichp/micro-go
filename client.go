@@ -1,4 +1,4 @@
-package m3o
+package mgo
 
 import (
 	"github.com/m3o/m3o-go/client"
