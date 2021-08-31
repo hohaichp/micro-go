@@ -23,3 +23,8 @@ func main() {
 
 This package is highly experimental. You might notice request and response types not matching the APIs found on m3o.
 In that case let us know.
+
+## Known issues
+
+Map types are represented inaccurately, all maps are `map[string]interfaces{}` even if it's defined as `map[string]float64` or equivalent on m3o.com
+This is being fixed.
