@@ -18,3 +18,8 @@ func main() {
 	fmt.Println(rsp, err)
 }
 ```
+
+## Beta warning
+
+This package is highly experimental. You might notice request and response types not matching the APIs found on m3o.
+In that case let us know.
