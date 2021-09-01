@@ -1,6 +1,6 @@
-# M3O Go Client
+# Micro Go Client
 
-A typesafe generated Go client for M3O services
+A typesafe generated Go client for Micro services
 
 ```go
 package main
