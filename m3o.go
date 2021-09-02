@@ -1,7 +1,6 @@
-package m3o
+package micro
 
 import(
-	"github.com/m3o/m3o-go/client"
 	"github.com/micro/micro-go/answer"
 "github.com/micro/micro-go/cache"
 "github.com/micro/micro-go/crypto"
