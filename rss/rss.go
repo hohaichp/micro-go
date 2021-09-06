@@ -1,6 +1,6 @@
 package rss
 
-import(
+import (
 	"github.com/m3o/m3o-go/client"
 )
 
@@ -15,7 +15,6 @@ func NewRssService(token string) *RssService {
 type RssService struct {
 	client *client.Client
 }
-
 
 func (t *RssService) Add(request AddRequest) (*AddResponse, error) {
 	rsp := &AddResponse{}
@@ -37,56 +36,52 @@ func (t *RssService) Remove(request RemoveRequest) (*RemoveResponse, error) {
 	return rsp, t.client.Call("rss", "Remove", request, rsp)
 }
 
-
-
-
 type AddRequest struct {
-  Category string `json:"category"`
-  Name string `json:"name"`
-  Url string `json:"url"`
+	Category string `json:"category"`
+	Name     string `json:"name"`
+	Url      string `json:"url"`
 }
 
 type AddResponse struct {
 }
 
 type Entry struct {
-  Content string `json:"content"`
-  Date string `json:"date"`
-  Feed string `json:"feed"`
-  Id string `json:"id"`
-  Link string `json:"link"`
-  Summary string `json:"summary"`
-  Title string `json:"title"`
+	Content string `json:"content"`
+	Date    string `json:"date"`
+	Feed    string `json:"feed"`
+	Id      string `json:"id"`
+	Link    string `json:"link"`
+	Summary string `json:"summary"`
+	Title   string `json:"title"`
 }
 
 type Feed struct {
-  Category string `json:"category"`
-  Id string `json:"id"`
-  Name string `json:"name"`
-  Url string `json:"url"`
+	Category string `json:"category"`
+	Id       string `json:"id"`
+	Name     string `json:"name"`
+	Url      string `json:"url"`
 }
 
 type FeedRequest struct {
-  Limit int64 `json:"limit"`
-  Name string `json:"name"`
-  Offset int64 `json:"offset"`
+	Limit  int64  `json:"limit"`
+	Name   string `json:"name"`
+	Offset int64  `json:"offset"`
 }
 
 type FeedResponse struct {
-  Entries []Entry `json:"entries"`
+	Entries []Entry `json:"entries"`
 }
 
 type ListRequest struct {
 }
 
 type ListResponse struct {
-  Feeds []Feed `json:"feeds"`
+	Feeds []Feed `json:"feeds"`
 }
 
 type RemoveRequest struct {
-  Name string `json:"name"`
+	Name string `json:"name"`
 }
 
 type RemoveResponse struct {
 }
-

@@ -1,6 +1,6 @@
 package emoji
 
-import(
+import (
 	"github.com/m3o/m3o-go/client"
 )
 
@@ -15,7 +15,6 @@ func NewEmojiService(token string) *EmojiService {
 type EmojiService struct {
 	client *client.Client
 }
-
 
 func (t *EmojiService) Find(request FindRequest) (*FindResponse, error) {
 	rsp := &FindResponse{}
@@ -37,40 +36,36 @@ func (t *EmojiService) Send(request SendRequest) (*SendResponse, error) {
 	return rsp, t.client.Call("emoji", "Send", request, rsp)
 }
 
-
-
-
 type FindRequest struct {
-  Alias string `json:"alias"`
+	Alias string `json:"alias"`
 }
 
 type FindResponse struct {
-  Emoji string `json:"emoji"`
+	Emoji string `json:"emoji"`
 }
 
 type FlagRequest struct {
-  Code string `json:"code"`
+	Code string `json:"code"`
 }
 
 type FlagResponse struct {
-  Flag string `json:"flag"`
+	Flag string `json:"flag"`
 }
 
 type PrintRequest struct {
-  Text string `json:"text"`
+	Text string `json:"text"`
 }
 
 type PrintResponse struct {
-  Text string `json:"text"`
+	Text string `json:"text"`
 }
 
 type SendRequest struct {
-  From string `json:"from"`
-  Message string `json:"message"`
-  To string `json:"to"`
+	From    string `json:"from"`
+	Message string `json:"message"`
+	To      string `json:"to"`
 }
 
 type SendResponse struct {
-  Success bool `json:"success"`
+	Success bool `json:"success"`
 }
-

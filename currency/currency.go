@@ -1,6 +1,6 @@
 package currency
 
-import(
+import (
 	"github.com/m3o/m3o-go/client"
 )
 
@@ -15,7 +15,6 @@ func NewCurrencyService(token string) *CurrencyService {
 type CurrencyService struct {
 	client *client.Client
 }
-
 
 func (t *CurrencyService) Codes(request CodesRequest) (*CodesResponse, error) {
 	rsp := &CodesResponse{}
@@ -37,51 +36,47 @@ func (t *CurrencyService) Rates(request RatesRequest) (*RatesResponse, error) {
 	return rsp, t.client.Call("currency", "Rates", request, rsp)
 }
 
-
-
-
 type Code struct {
-  Currency string `json:"currency"`
-  Name string `json:"name"`
+	Currency string `json:"currency"`
+	Name     string `json:"name"`
 }
 
 type CodesRequest struct {
 }
 
 type CodesResponse struct {
-  Codes []Code `json:"codes"`
+	Codes []Code `json:"codes"`
 }
 
 type ConvertRequest struct {
-  Amount float64 `json:"amount"`
-  From string `json:"from"`
-  To string `json:"to"`
+	Amount float64 `json:"amount"`
+	From   string  `json:"from"`
+	To     string  `json:"to"`
 }
 
 type ConvertResponse struct {
-  Amount float64 `json:"amount"`
-  From string `json:"from"`
-  Rate float64 `json:"rate"`
-  To string `json:"to"`
+	Amount float64 `json:"amount"`
+	From   string  `json:"from"`
+	Rate   float64 `json:"rate"`
+	To     string  `json:"to"`
 }
 
 type HistoryRequest struct {
-  Code string `json:"code"`
-  Date string `json:"date"`
+	Code string `json:"code"`
+	Date string `json:"date"`
 }
 
 type HistoryResponse struct {
-  Code string `json:"code"`
-  Date string `json:"date"`
-  Rates map[string]float64 `json:"rates"`
+	Code  string             `json:"code"`
+	Date  string             `json:"date"`
+	Rates map[string]float64 `json:"rates"`
 }
 
 type RatesRequest struct {
-  Code string `json:"code"`
+	Code string `json:"code"`
 }
 
 type RatesResponse struct {
-  Code string `json:"code"`
-  Rates map[string]float64 `json:"rates"`
+	Code  string             `json:"code"`
+	Rates map[string]float64 `json:"rates"`
 }
-

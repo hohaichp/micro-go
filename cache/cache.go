@@ -1,6 +1,6 @@
 package cache
 
-import(
+import (
 	"github.com/m3o/m3o-go/client"
 )
 
@@ -15,7 +15,6 @@ func NewCacheService(token string) *CacheService {
 type CacheService struct {
 	client *client.Client
 }
-
 
 func (t *CacheService) Decrement(request DecrementRequest) (*DecrementResponse, error) {
 	rsp := &DecrementResponse{}
@@ -42,54 +41,50 @@ func (t *CacheService) Set(request SetRequest) (*SetResponse, error) {
 	return rsp, t.client.Call("cache", "Set", request, rsp)
 }
 
-
-
-
 type DecrementRequest struct {
-  Key string `json:"key"`
-  Value int64 `json:"value"`
+	Key   string `json:"key"`
+	Value int64  `json:"value"`
 }
 
 type DecrementResponse struct {
-  Key string `json:"key"`
-  Value int64 `json:"value"`
+	Key   string `json:"key"`
+	Value int64  `json:"value"`
 }
 
 type DeleteRequest struct {
-  Key string `json:"key"`
+	Key string `json:"key"`
 }
 
 type DeleteResponse struct {
-  Status string `json:"status"`
+	Status string `json:"status"`
 }
 
 type GetRequest struct {
-  Key string `json:"key"`
+	Key string `json:"key"`
 }
 
 type GetResponse struct {
-  Key string `json:"key"`
-  Ttl int64 `json:"ttl"`
-  Value string `json:"value"`
+	Key   string `json:"key"`
+	Ttl   int64  `json:"ttl"`
+	Value string `json:"value"`
 }
 
 type IncrementRequest struct {
-  Key string `json:"key"`
-  Value int64 `json:"value"`
+	Key   string `json:"key"`
+	Value int64  `json:"value"`
 }
 
 type IncrementResponse struct {
-  Key string `json:"key"`
-  Value int64 `json:"value"`
+	Key   string `json:"key"`
+	Value int64  `json:"value"`
 }
 
 type SetRequest struct {
-  Key string `json:"key"`
-  Ttl int64 `json:"ttl"`
-  Value string `json:"value"`
+	Key   string `json:"key"`
+	Ttl   int64  `json:"ttl"`
+	Value string `json:"value"`
 }
 
 type SetResponse struct {
-  Status string `json:"status"`
+	Status string `json:"status"`
 }
-

@@ -1,6 +1,6 @@
 package answer
 
-import(
+import (
 	"github.com/m3o/m3o-go/client"
 )
 
@@ -16,22 +16,17 @@ type AnswerService struct {
 	client *client.Client
 }
 
-
 func (t *AnswerService) Question(request QuestionRequest) (*QuestionResponse, error) {
 	rsp := &QuestionResponse{}
 	return rsp, t.client.Call("answer", "Question", request, rsp)
 }
 
-
-
-
 type QuestionRequest struct {
-  Query string `json:"query"`
+	Query string `json:"query"`
 }
 
 type QuestionResponse struct {
-  Answer string `json:"answer"`
-  Image string `json:"image"`
-  Url string `json:"url"`
+	Answer string `json:"answer"`
+	Image  string `json:"image"`
+	Url    string `json:"url"`
 }
-

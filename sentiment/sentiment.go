@@ -1,6 +1,6 @@
 package sentiment
 
-import(
+import (
 	"github.com/m3o/m3o-go/client"
 )
 
@@ -16,21 +16,16 @@ type SentimentService struct {
 	client *client.Client
 }
 
-
 func (t *SentimentService) Analyze(request AnalyzeRequest) (*AnalyzeResponse, error) {
 	rsp := &AnalyzeResponse{}
 	return rsp, t.client.Call("sentiment", "Analyze", request, rsp)
 }
 
-
-
-
 type AnalyzeRequest struct {
-  Lang string `json:"lang"`
-  Text string `json:"text"`
+	Lang string `json:"lang"`
+	Text string `json:"text"`
 }
 
 type AnalyzeResponse struct {
-  Score float64 `json:"score"`
+	Score float64 `json:"score"`
 }
-

@@ -1,6 +1,6 @@
 package thumbnail
 
-import(
+import (
 	"github.com/m3o/m3o-go/client"
 )
 
@@ -16,22 +16,17 @@ type ThumbnailService struct {
 	client *client.Client
 }
 
-
 func (t *ThumbnailService) Screenshot(request ScreenshotRequest) (*ScreenshotResponse, error) {
 	rsp := &ScreenshotResponse{}
 	return rsp, t.client.Call("thumbnail", "Screenshot", request, rsp)
 }
 
-
-
-
 type ScreenshotRequest struct {
-  Height int32 `json:"height"`
-  Url string `json:"url"`
-  Width int32 `json:"width"`
+	Height int32  `json:"height"`
+	Url    string `json:"url"`
+	Width  int32  `json:"width"`
 }
 
 type ScreenshotResponse struct {
-  ImageUrl string `json:"imageUrl"`
+	ImageUrl string `json:"imageUrl"`
 }
-

@@ -1,6 +1,6 @@
 package sms
 
-import(
+import (
 	"github.com/m3o/m3o-go/client"
 )
 
@@ -16,23 +16,18 @@ type SmsService struct {
 	client *client.Client
 }
 
-
 func (t *SmsService) Send(request SendRequest) (*SendResponse, error) {
 	rsp := &SendResponse{}
 	return rsp, t.client.Call("sms", "Send", request, rsp)
 }
 
-
-
-
 type SendRequest struct {
-  From string `json:"from"`
-  Message string `json:"message"`
-  To string `json:"to"`
+	From    string `json:"from"`
+	Message string `json:"message"`
+	To      string `json:"to"`
 }
 
 type SendResponse struct {
-  Info string `json:"info"`
-  Status string `json:"status"`
+	Info   string `json:"info"`
+	Status string `json:"status"`
 }
-

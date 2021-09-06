@@ -1,6 +1,6 @@
 package location
 
-import(
+import (
 	"github.com/m3o/m3o-go/client"
 )
 
@@ -15,7 +15,6 @@ func NewLocationService(token string) *LocationService {
 type LocationService struct {
 	client *client.Client
 }
-
 
 func (t *LocationService) Read(request ReadRequest) (*ReadResponse, error) {
 	rsp := &ReadResponse{}
@@ -32,44 +31,40 @@ func (t *LocationService) Search(request SearchRequest) (*SearchResponse, error)
 	return rsp, t.client.Call("location", "Search", request, rsp)
 }
 
-
-
-
 type Entity struct {
-  Id string `json:"id"`
-  Location Point `json:"location"`
-  Type string `json:"type"`
+	Id       string `json:"id"`
+	Location Point  `json:"location"`
+	Type     string `json:"type"`
 }
 
 type Point struct {
-  Latitude float64 `json:"latitude"`
-  Longitude float64 `json:"longitude"`
-  Timestamp int64 `json:"timestamp"`
+	Latitude  float64 `json:"latitude"`
+	Longitude float64 `json:"longitude"`
+	Timestamp int64   `json:"timestamp"`
 }
 
 type ReadRequest struct {
-  Id string `json:"id"`
+	Id string `json:"id"`
 }
 
 type ReadResponse struct {
-  Entity Entity `json:"entity"`
+	Entity Entity `json:"entity"`
 }
 
 type SaveRequest struct {
-  Entity Entity `json:"entity"`
+	Entity Entity `json:"entity"`
 }
 
 type SaveResponse struct {
 }
 
 type SearchRequest struct {
-  Center Point `json:"center"`
-  NumEntities int64 `json:"numEntities"`
-  Radius float64 `json:"radius"`
-  Type string `json:"type"`
+	Center      Point   `json:"center"`
+	NumEntities int64   `json:"numEntities"`
+	Radius      float64 `json:"radius"`
+	Type        string  `json:"type"`
 }
 
 type SearchResponse struct {
-  Entities []Entity `json:"entities"`
+	Entities []Entity `json:"entities"`
 }
-

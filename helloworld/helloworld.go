@@ -1,6 +1,6 @@
 package helloworld
 
-import(
+import (
 	"github.com/m3o/m3o-go/client"
 )
 
@@ -16,7 +16,6 @@ type HelloworldService struct {
 	client *client.Client
 }
 
-
 func (t *HelloworldService) Call(request CallRequest) (*CallResponse, error) {
 	rsp := &CallResponse{}
 	return rsp, t.client.Call("helloworld", "Call", request, rsp)
@@ -27,23 +26,19 @@ func (t *HelloworldService) Stream(request StreamRequest) (*StreamResponse, erro
 	return rsp, t.client.Call("helloworld", "Stream", request, rsp)
 }
 
-
-
-
 type CallRequest struct {
-  Name string `json:"name"`
+	Name string `json:"name"`
 }
 
 type CallResponse struct {
-  Message string `json:"message"`
+	Message string `json:"message"`
 }
 
 type StreamRequest struct {
-  Messages int64 `json:"messages"`
-  Name string `json:"name"`
+	Messages int64  `json:"messages"`
+	Name     string `json:"name"`
 }
 
 type StreamResponse struct {
-  Message string `json:"message"`
+	Message string `json:"message"`
 }
-

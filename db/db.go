@@ -1,6 +1,6 @@
 package db
 
-import(
+import (
 	"github.com/m3o/m3o-go/client"
 )
 
@@ -15,7 +15,6 @@ func NewDbService(token string) *DbService {
 type DbService struct {
 	client *client.Client
 }
-
 
 func (t *DbService) Create(request CreateRequest) (*CreateResponse, error) {
 	rsp := &CreateResponse{}
@@ -42,54 +41,50 @@ func (t *DbService) Update(request UpdateRequest) (*UpdateResponse, error) {
 	return rsp, t.client.Call("db", "Update", request, rsp)
 }
 
-
-
-
 type CreateRequest struct {
-  Record map[string]interface{} `json:"record"`
-  Table string `json:"table"`
+	Record map[string]interface{} `json:"record"`
+	Table  string                 `json:"table"`
 }
 
 type CreateResponse struct {
-  Id string `json:"id"`
+	Id string `json:"id"`
 }
 
 type DeleteRequest struct {
-  Id string `json:"id"`
-  Table string `json:"table"`
+	Id    string `json:"id"`
+	Table string `json:"table"`
 }
 
 type DeleteResponse struct {
 }
 
 type ReadRequest struct {
-  Id string `json:"id"`
-  Limit int32 `json:"limit"`
-  Offset int32 `json:"offset"`
-  Order string `json:"order"`
-  OrderBy string `json:"orderBy"`
-  Query string `json:"query"`
-  Table string `json:"table"`
+	Id      string `json:"id"`
+	Limit   int32  `json:"limit"`
+	Offset  int32  `json:"offset"`
+	Order   string `json:"order"`
+	OrderBy string `json:"orderBy"`
+	Query   string `json:"query"`
+	Table   string `json:"table"`
 }
 
 type ReadResponse struct {
-  Records map[string]interface{} `json:"records"`
+	Records map[string]interface{} `json:"records"`
 }
 
 type TruncateRequest struct {
-  Table string `json:"table"`
+	Table string `json:"table"`
 }
 
 type TruncateResponse struct {
-  Table string `json:"table"`
+	Table string `json:"table"`
 }
 
 type UpdateRequest struct {
-  Id string `json:"id"`
-  Record map[string]interface{} `json:"record"`
-  Table string `json:"table"`
+	Id     string                 `json:"id"`
+	Record map[string]interface{} `json:"record"`
+	Table  string                 `json:"table"`
 }
 
 type UpdateResponse struct {
 }
-
