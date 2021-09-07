@@ -16,9 +16,19 @@ type FileService struct {
 	client *client.Client
 }
 
+func (t *FileService) Delete(request DeleteRequest) (*DeleteResponse, error) {
+	rsp := &DeleteResponse{}
+	return rsp, t.client.Call("file", "Delete", request, rsp)
+}
+
 func (t *FileService) List(request ListRequest) (*ListResponse, error) {
 	rsp := &ListResponse{}
 	return rsp, t.client.Call("file", "List", request, rsp)
+}
+
+func (t *FileService) Read(request ReadRequest) (*ReadResponse, error) {
+	rsp := &ReadResponse{}
+	return rsp, t.client.Call("file", "Read", request, rsp)
 }
 
 func (t *FileService) Save(request SaveRequest) (*SaveResponse, error) {
@@ -26,14 +36,19 @@ func (t *FileService) Save(request SaveRequest) (*SaveResponse, error) {
 	return rsp, t.client.Call("file", "Save", request, rsp)
 }
 
-type File struct {
-	Created      int64  `json:"created"`
-	FileContents string `json:"fileContents"`
-	IsDirectory  bool   `json:"isDirectory"`
-	Name         string `json:"name"`
-	Path         string `json:"path"`
-	Project      string `json:"project"`
-	Updated      int64  `json:"updated"`
+type BatchSaveRequest struct {
+	Files []Record `json:"files"`
+}
+
+type BatchSaveResponse struct {
+}
+
+type DeleteRequest struct {
+	Path    string `json:"path"`
+	Project string `json:"project"`
+}
+
+type DeleteResponse struct {
 }
 
 type ListRequest struct {
@@ -42,11 +57,29 @@ type ListRequest struct {
 }
 
 type ListResponse struct {
-	File []File `json:"file"`
+	Files []Record `json:"files"`
+}
+
+type ReadRequest struct {
+	Path    string `json:"path"`
+	Project string `json:"project"`
+}
+
+type ReadResponse struct {
+	File Record `json:"file"`
+}
+
+type Record struct {
+	Content  string            `json:"content"`
+	Created  string            `json:"created"`
+	Metadata map[string]string `json:"metadata"`
+	Path     string            `json:"path"`
+	Project  string            `json:"project"`
+	Updated  string            `json:"updated"`
 }
 
 type SaveRequest struct {
-	File []File `json:"file"`
+	File Record `json:"file"`
 }
 
 type SaveResponse struct {
