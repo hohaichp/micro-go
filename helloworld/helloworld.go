@@ -35,6 +35,7 @@ type CallResponse struct {
 }
 
 type StreamRequest struct {
+	// the number of messages to send back
 	Messages int64  `json:"messages"`
 	Name     string `json:"name"`
 }

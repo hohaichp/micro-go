@@ -32,6 +32,7 @@ func (t *UrlService) Shorten(request ShortenRequest) (*ShortenResponse, error) {
 }
 
 type ListRequest struct {
+	// filter by short URL, optional
 	ShortUrl string `json:"shortUrl"`
 }
 
@@ -40,6 +41,8 @@ type ListResponse struct {
 }
 
 type ProxyRequest struct {
+	// short url ID, without the domain, eg. if your short URL is
+	// `m3o.one/u/someshorturlid` then pass in `someshorturlid`
 	ShortUrl string `json:"shortUrl"`
 }
 
@@ -58,7 +61,10 @@ type ShortenResponse struct {
 type URLPair struct {
 	Created        int64  `json:"created"`
 	DestinationUrl string `json:"destinationUrl"`
-	HitCount       int64  `json:"hitCount"`
-	Owner          string `json:"owner"`
-	ShortUrl       string `json:"shortUrl"`
+	// HitCount keeps track many times the short URL has been resolved.
+	// Hitcount only gets saved to disk (database) after every 10th hit, so
+	// its not intended to be 100% accurate, more like an almost correct estimate.
+	HitCount int64  `json:"hitCount"`
+	Owner    string `json:"owner"`
+	ShortUrl string `json:"shortUrl"`
 }

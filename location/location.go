@@ -44,6 +44,7 @@ type Point struct {
 }
 
 type ReadRequest struct {
+	// the entity id
 	Id string `json:"id"`
 }
 
@@ -59,10 +60,14 @@ type SaveResponse struct {
 }
 
 type SearchRequest struct {
-	Center      Point   `json:"center"`
-	NumEntities int64   `json:"numEntities"`
-	Radius      float64 `json:"radius"`
-	Type        string  `json:"type"`
+	// Central position to search from
+	Center Point `json:"center"`
+	// Maximum number of entities to return
+	NumEntities int64 `json:"numEntities"`
+	// radius in meters
+	Radius float64 `json:"radius"`
+	// type of entities to filter
+	Type string `json:"type"`
 }
 
 type SearchResponse struct {

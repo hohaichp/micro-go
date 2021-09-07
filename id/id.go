@@ -27,11 +27,14 @@ func (t *IdService) Types(request TypesRequest) (*TypesResponse, error) {
 }
 
 type GenerateRequest struct {
+	// type of id e.g uuid, shortid, snowflake (64 bit), bigflake (128 bit)
 	Type string `json:"type"`
 }
 
 type GenerateResponse struct {
-	Id   string `json:"id"`
+	// the unique id generated
+	Id string `json:"id"`
+	// the type of id generated
 	Type string `json:"type"`
 }
 

@@ -32,35 +32,51 @@ func (t *ForexService) Quote(request QuoteRequest) (*QuoteResponse, error) {
 }
 
 type HistoryRequest struct {
+	// the forex symbol e.g GBPUSD
 	Symbol string `json:"symbol"`
 }
 
 type HistoryResponse struct {
-	Close  float64 `json:"close"`
-	Date   string  `json:"date"`
-	High   float64 `json:"high"`
-	Low    float64 `json:"low"`
-	Open   float64 `json:"open"`
-	Symbol string  `json:"symbol"`
+	// the close price
+	Close float64 `json:"close"`
+	// the date
+	Date string `json:"date"`
+	// the peak price
+	High float64 `json:"high"`
+	// the low price
+	Low float64 `json:"low"`
+	// the open price
+	Open float64 `json:"open"`
+	// the forex symbol
+	Symbol string `json:"symbol"`
+	// the volume
 	Volume float64 `json:"volume"`
 }
 
 type PriceRequest struct {
+	// forex symbol e.g GBPUSD
 	Symbol string `json:"symbol"`
 }
 
 type PriceResponse struct {
-	Price  float64 `json:"price"`
-	Symbol string  `json:"symbol"`
+	// the last price
+	Price float64 `json:"price"`
+	// the forex symbol e.g GBPUSD
+	Symbol string `json:"symbol"`
 }
 
 type QuoteRequest struct {
+	// the forex symbol e.g GBPUSD
 	Symbol string `json:"symbol"`
 }
 
 type QuoteResponse struct {
-	AskPrice  float64 `json:"askPrice"`
-	BidPrice  float64 `json:"bidPrice"`
-	Symbol    string  `json:"symbol"`
-	Timestamp string  `json:"timestamp"`
+	// the asking price
+	AskPrice float64 `json:"askPrice"`
+	// the bidding price
+	BidPrice float64 `json:"bidPrice"`
+	// the forex symbol
+	Symbol string `json:"symbol"`
+	// the UTC timestamp of the quote
+	Timestamp string `json:"timestamp"`
 }

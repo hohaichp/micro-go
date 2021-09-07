@@ -37,35 +37,56 @@ func (t *RssService) Remove(request RemoveRequest) (*RemoveResponse, error) {
 }
 
 type AddRequest struct {
+	// category to add e.g news
 	Category string `json:"category"`
-	Name     string `json:"name"`
-	Url      string `json:"url"`
+	// rss feed name
+	// eg. a16z
+	Name string `json:"name"`
+	// rss feed url
+	// eg. http://a16z.com/feed/
+	Url string `json:"url"`
 }
 
 type AddResponse struct {
 }
 
 type Entry struct {
+	// article content
 	Content string `json:"content"`
-	Date    string `json:"date"`
-	Feed    string `json:"feed"`
-	Id      string `json:"id"`
-	Link    string `json:"link"`
+	// data of the entry
+	Date string `json:"date"`
+	// the rss feed where it came from
+	Feed string `json:"feed"`
+	// unique id of the entry
+	Id string `json:"id"`
+	// rss feed url of the entry
+	Link string `json:"link"`
+	// article summary
 	Summary string `json:"summary"`
-	Title   string `json:"title"`
+	// title of the entry
+	Title string `json:"title"`
 }
 
 type Feed struct {
+	// category of the feed e.g news
 	Category string `json:"category"`
-	Id       string `json:"id"`
-	Name     string `json:"name"`
-	Url      string `json:"url"`
+	// unique id
+	Id string `json:"id"`
+	// rss feed name
+	// eg. a16z
+	Name string `json:"name"`
+	// rss feed url
+	// eg. http://a16z.com/feed/
+	Url string `json:"url"`
 }
 
 type FeedRequest struct {
-	Limit  int64  `json:"limit"`
-	Name   string `json:"name"`
-	Offset int64  `json:"offset"`
+	// limit entries returned
+	Limit int64 `json:"limit"`
+	// rss feed name
+	Name string `json:"name"`
+	// offset entries
+	Offset int64 `json:"offset"`
 }
 
 type FeedResponse struct {
@@ -80,6 +101,8 @@ type ListResponse struct {
 }
 
 type RemoveRequest struct {
+	// rss feed name
+	// eg. a16z
 	Name string `json:"name"`
 }
 

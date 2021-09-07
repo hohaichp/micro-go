@@ -67,22 +67,33 @@ func (t *UserService) VerifyEmail(request VerifyEmailRequest) (*VerifyEmailRespo
 }
 
 type Account struct {
-	Created          int64             `json:"created"`
-	Email            string            `json:"email"`
-	Id               string            `json:"id"`
-	Profile          map[string]string `json:"profile"`
-	Updated          int64             `json:"updated"`
-	Username         string            `json:"username"`
-	VerificationDate int64             `json:"verificationDate"`
-	Verified         bool              `json:"verified"`
+	// unix timestamp
+	Created int64 `json:"created"`
+	// an email address
+	Email string `json:"email"`
+	// unique account id
+	Id string `json:"id"`
+	// Store any custom data you want about your users in this fields.
+	Profile map[string]string `json:"profile"`
+	// unix timestamp
+	Updated int64 `json:"updated"`
+	// alphanumeric username
+	Username         string `json:"username"`
+	VerificationDate int64  `json:"verificationDate"`
+	Verified         bool   `json:"verified"`
 }
 
 type CreateRequest struct {
-	Email    string            `json:"email"`
-	Id       string            `json:"id"`
-	Password string            `json:"password"`
-	Profile  map[string]string `json:"profile"`
-	Username string            `json:"username"`
+	// the email address
+	Email string `json:"email"`
+	// optional account id
+	Id string `json:"id"`
+	// the user password
+	Password string `json:"password"`
+	// optional user profile as map<string,string>
+	Profile map[string]string `json:"profile"`
+	// the username
+	Username string `json:"username"`
 }
 
 type CreateResponse struct {
@@ -90,6 +101,7 @@ type CreateResponse struct {
 }
 
 type DeleteRequest struct {
+	// the account id
 	Id string `json:"id"`
 }
 
@@ -97,12 +109,16 @@ type DeleteResponse struct {
 }
 
 type LoginRequest struct {
-	Email    string `json:"email"`
+	// The email address of the user
+	Email string `json:"email"`
+	// The password of the user
 	Password string `json:"password"`
+	// The username of the user
 	Username string `json:"username"`
 }
 
 type LoginResponse struct {
+	// The session of the logged in  user
 	Session Session `json:"session"`
 }
 
@@ -114,8 +130,11 @@ type LogoutResponse struct {
 }
 
 type ReadRequest struct {
-	Email    string `json:"email"`
-	Id       string `json:"id"`
+	// the account email
+	Email string `json:"email"`
+	// the account id
+	Id string `json:"id"`
+	// the account username
 	Username string `json:"username"`
 }
 
@@ -124,6 +143,7 @@ type ReadResponse struct {
 }
 
 type ReadSessionRequest struct {
+	// The unique session id
 	SessionId string `json:"sessionId"`
 }
 
@@ -134,43 +154,59 @@ type ReadSessionResponse struct {
 type SendVerificationEmailRequest struct {
 	Email              string `json:"email"`
 	FailureRedirectUrl string `json:"failureRedirectUrl"`
-	FromName           string `json:"fromName"`
-	RedirectUrl        string `json:"redirectUrl"`
-	Subject            string `json:"subject"`
-	TextContent        string `json:"textContent"`
+	// Display name of the sender for the email. Note: the email address will still be 'support@m3o.com'
+	FromName    string `json:"fromName"`
+	RedirectUrl string `json:"redirectUrl"`
+	Subject     string `json:"subject"`
+	// Text content of the email. Don't forget to include the string '$micro_verification_link' which will be replaced by the real verification link
+	// HTML emails are not available currently.
+	TextContent string `json:"textContent"`
 }
 
 type SendVerificationEmailResponse struct {
 }
 
 type Session struct {
-	Created int64  `json:"created"`
-	Expires int64  `json:"expires"`
-	Id      string `json:"id"`
-	UserId  string `json:"userId"`
+	// unix timestamp
+	Created int64 `json:"created"`
+	// unix timestamp
+	Expires int64 `json:"expires"`
+	// the session id
+	Id string `json:"id"`
+	// the associated user id
+	UserId string `json:"userId"`
 }
 
 type UpdatePasswordRequest struct {
+	// confirm new password
 	ConfirmPassword string `json:"confirmPassword"`
-	NewPassword     string `json:"newPassword"`
-	OldPassword     string `json:"oldPassword"`
-	UserId          string `json:"userId"`
+	// the new password
+	NewPassword string `json:"newPassword"`
+	// the old password
+	OldPassword string `json:"oldPassword"`
+	// the account id
+	UserId string `json:"userId"`
 }
 
 type UpdatePasswordResponse struct {
 }
 
 type UpdateRequest struct {
-	Email    string            `json:"email"`
-	Id       string            `json:"id"`
-	Profile  map[string]string `json:"profile"`
-	Username string            `json:"username"`
+	// the new email address
+	Email string `json:"email"`
+	// the account id
+	Id string `json:"id"`
+	// the user profile as map<string,string>
+	Profile map[string]string `json:"profile"`
+	// the new username
+	Username string `json:"username"`
 }
 
 type UpdateResponse struct {
 }
 
 type VerifyEmailRequest struct {
+	// The token from the verification email
 	Token string `json:"token"`
 }
 

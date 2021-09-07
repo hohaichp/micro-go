@@ -32,10 +32,15 @@ func (t *ImageService) Upload(request UploadRequest) (*UploadResponse, error) {
 }
 
 type ConvertRequest struct {
-	Base64    string `json:"base64"`
-	Name      string `json:"name"`
-	OutputUrl bool   `json:"outputUrl"`
-	Url       string `json:"url"`
+	// base64 encoded image to resize,
+	// ie. "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
+	Base64 string `json:"base64"`
+	// output name of the image including extension, ie. "cat.png"
+	Name string `json:"name"`
+	// make output a URL and not a base64 response
+	OutputUrl bool `json:"outputUrl"`
+	// url of the image to resize
+	Url string `json:"url"`
 }
 
 type ConvertResponse struct {
@@ -44,9 +49,15 @@ type ConvertResponse struct {
 }
 
 type CropOptions struct {
+	// Crop anchor point: "top", "top left", "top right",
+	// "left", "center", "right"
+	// "bottom left", "bottom", "bottom right".
+	// Optional. Defaults to center.
 	Anchor string `json:"anchor"`
-	Height int32  `json:"height"`
-	Width  int32  `json:"width"`
+	// height to crop to
+	Height int32 `json:"height"`
+	// width to crop to
+	Width int32 `json:"width"`
 }
 
 type Point struct {
@@ -60,13 +71,21 @@ type Rectangle struct {
 }
 
 type ResizeRequest struct {
-	Base64      string      `json:"base64"`
+	// base64 encoded image to resize,
+	// ie. "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
+	Base64 string `json:"base64"`
+	// optional crop options
+	// if provided, after resize, the image
+	// will be cropped
 	CropOptions CropOptions `json:"cropOptions"`
 	Height      int64       `json:"height"`
-	Name        string      `json:"name"`
-	OutputUrl   bool        `json:"outputUrl"`
-	Url         string      `json:"url"`
-	Width       int64       `json:"width"`
+	// output name of the image including extension, ie. "cat.png"
+	Name string `json:"name"`
+	// make output a URL and not a base64 response
+	OutputUrl bool `json:"outputUrl"`
+	// url of the image to resize
+	Url   string `json:"url"`
+	Width int64  `json:"width"`
 }
 
 type ResizeResponse struct {
@@ -75,9 +94,13 @@ type ResizeResponse struct {
 }
 
 type UploadRequest struct {
+	// Base64 encoded image to upload,
+	// ie. "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
 	Base64 string `json:"base64"`
-	Name   string `json:"name"`
-	Url    string `json:"url"`
+	// Output name of the image including extension, ie. "cat.png"
+	Name string `json:"name"`
+	// URL of the image to upload
+	Url string `json:"url"`
 }
 
 type UploadResponse struct {

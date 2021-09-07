@@ -22,11 +22,15 @@ func (t *AnswerService) Question(request QuestionRequest) (*QuestionResponse, er
 }
 
 type QuestionRequest struct {
+	// the question to answer
 	Query string `json:"query"`
 }
 
 type QuestionResponse struct {
+	// the answer to your question
 	Answer string `json:"answer"`
-	Image  string `json:"image"`
-	Url    string `json:"url"`
+	// any related image
+	Image string `json:"image"`
+	// a related url
+	Url string `json:"url"`
 }

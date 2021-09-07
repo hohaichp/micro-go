@@ -44,7 +44,9 @@ type BatchSaveResponse struct {
 }
 
 type DeleteRequest struct {
-	Path    string `json:"path"`
+	// Path to the file
+	Path string `json:"path"`
+	// The project name
 	Project string `json:"project"`
 }
 
@@ -52,7 +54,12 @@ type DeleteResponse struct {
 }
 
 type ListRequest struct {
-	Path    string `json:"path"`
+	// Defaults to '/', ie. lists all files in a project.
+	// Supply path to a folder if you want to list
+	// files inside that folder
+	// eg. '/docs'
+	Path string `json:"path"`
+	// Project, required for listing.
 	Project string `json:"project"`
 }
 
@@ -61,21 +68,31 @@ type ListResponse struct {
 }
 
 type ReadRequest struct {
-	Path    string `json:"path"`
+	// Path to the file
+	Path string `json:"path"`
+	// Project name
 	Project string `json:"project"`
 }
 
 type ReadResponse struct {
+	// Returns the file
 	File Record `json:"file"`
 }
 
 type Record struct {
-	Content  string            `json:"content"`
-	Created  string            `json:"created"`
+	// File contents
+	Content string `json:"content"`
+	// Time the file was created e.g 2021-05-20T13:37:21Z
+	Created string `json:"created"`
+	// Any other associated metadata as a map of key-value pairs
 	Metadata map[string]string `json:"metadata"`
-	Path     string            `json:"path"`
-	Project  string            `json:"project"`
-	Updated  string            `json:"updated"`
+	// Path to file or folder eg. '/documents/text-files/file.txt'.
+	Path string `json:"path"`
+	// A custom project to group files
+	// eg. file-of-mywebsite.com
+	Project string `json:"project"`
+	// Time the file was updated e.g 2021-05-20T13:37:21Z
+	Updated string `json:"updated"`
 }
 
 type SaveRequest struct {

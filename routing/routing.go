@@ -32,35 +32,53 @@ func (t *RoutingService) Route(request RouteRequest) (*RouteResponse, error) {
 }
 
 type Direction struct {
-	Distance      float64        `json:"distance"`
-	Duration      float64        `json:"duration"`
-	Instruction   string         `json:"instruction"`
+	// distance to travel in meters
+	Distance float64 `json:"distance"`
+	// duration to travel in seconds
+	Duration float64 `json:"duration"`
+	// human readable instruction
+	Instruction string `json:"instruction"`
+	// intersections on route
 	Intersections []Intersection `json:"intersections"`
-	Maneuver      Maneuver       `json:"maneuver"`
-	Name          string         `json:"name"`
-	Reference     string         `json:"reference"`
+	// maneuver to take
+	Maneuver Maneuver `json:"maneuver"`
+	// street name or location
+	Name string `json:"name"`
+	// alternative reference
+	Reference string `json:"reference"`
 }
 
 type DirectionsRequest struct {
+	// The destination of the journey
 	Destination Point `json:"destination"`
-	Origin      Point `json:"origin"`
+	// The staring point for the journey
+	Origin Point `json:"origin"`
 }
 
 type DirectionsResponse struct {
+	// Turn by turn directions
 	Directions []Direction `json:"directions"`
-	Distance   float64     `json:"distance"`
-	Duration   float64     `json:"duration"`
-	Waypoints  []Waypoint  `json:"waypoints"`
+	// Estimated distance of the route in meters
+	Distance float64 `json:"distance"`
+	// Estimated duration of the route in seconds
+	Duration float64 `json:"duration"`
+	// The waypoints on the route
+	Waypoints []Waypoint `json:"waypoints"`
 }
 
 type EtaRequest struct {
-	Destination Point   `json:"destination"`
-	Origin      Point   `json:"origin"`
-	Speed       float64 `json:"speed"`
-	Type        string  `json:"type"`
+	// The end point for the eta calculation
+	Destination Point `json:"destination"`
+	// The starting point for the eta calculation
+	Origin Point `json:"origin"`
+	// speed in kilometers
+	Speed float64 `json:"speed"`
+	// type of transport. Only "car" is supported currently.
+	Type string `json:"type"`
 }
 
 type EtaResponse struct {
+	// eta in seconds
 	Duration float64 `json:"duration"`
 }
 
@@ -78,22 +96,31 @@ type Maneuver struct {
 }
 
 type Point struct {
-	Latitude  float64 `json:"latitude"`
+	// Lat e.g 52.523219
+	Latitude float64 `json:"latitude"`
+	// Long e.g 13.428555
 	Longitude float64 `json:"longitude"`
 }
 
 type RouteRequest struct {
+	// Point of destination for the trip
 	Destination Point `json:"destination"`
-	Origin      Point `json:"origin"`
+	// Point of origin for the trip
+	Origin Point `json:"origin"`
 }
 
 type RouteResponse struct {
-	Distance  float64    `json:"distance"`
-	Duration  float64    `json:"duration"`
+	// estimated distance in meters
+	Distance float64 `json:"distance"`
+	// estimated duration in seconds
+	Duration float64 `json:"duration"`
+	// waypoints on the route
 	Waypoints []Waypoint `json:"waypoints"`
 }
 
 type Waypoint struct {
-	Location Point  `json:"location"`
-	Name     string `json:"name"`
+	// gps point coordinates
+	Location Point `json:"location"`
+	// street name or related reference
+	Name string `json:"name"`
 }

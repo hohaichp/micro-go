@@ -42,49 +42,67 @@ func (t *CacheService) Set(request SetRequest) (*SetResponse, error) {
 }
 
 type DecrementRequest struct {
-	Key   string `json:"key"`
-	Value int64  `json:"value"`
+	// The key to decrement
+	Key string `json:"key"`
+	// The amount to decrement the value by
+	Value int64 `json:"value"`
 }
 
 type DecrementResponse struct {
-	Key   string `json:"key"`
-	Value int64  `json:"value"`
+	// The key decremented
+	Key string `json:"key"`
+	// The new value
+	Value int64 `json:"value"`
 }
 
 type DeleteRequest struct {
+	// The key to delete
 	Key string `json:"key"`
 }
 
 type DeleteResponse struct {
+	// Returns "ok" if successful
 	Status string `json:"status"`
 }
 
 type GetRequest struct {
+	// The key to retrieve
 	Key string `json:"key"`
 }
 
 type GetResponse struct {
-	Key   string `json:"key"`
-	Ttl   int64  `json:"ttl"`
+	// The key
+	Key string `json:"key"`
+	// Time to live in seconds
+	Ttl int64 `json:"ttl"`
+	// The value
 	Value string `json:"value"`
 }
 
 type IncrementRequest struct {
-	Key   string `json:"key"`
-	Value int64  `json:"value"`
+	// The key to increment
+	Key string `json:"key"`
+	// The amount to increment the value by
+	Value int64 `json:"value"`
 }
 
 type IncrementResponse struct {
-	Key   string `json:"key"`
-	Value int64  `json:"value"`
+	// The key incremented
+	Key string `json:"key"`
+	// The new value
+	Value int64 `json:"value"`
 }
 
 type SetRequest struct {
-	Key   string `json:"key"`
-	Ttl   int64  `json:"ttl"`
+	// The key to update
+	Key string `json:"key"`
+	// Time to live in seconds
+	Ttl int64 `json:"ttl"`
+	// The value to set
 	Value string `json:"value"`
 }
 
 type SetResponse struct {
+	// Returns "ok" if successful
 	Status string `json:"status"`
 }

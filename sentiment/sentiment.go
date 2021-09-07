@@ -22,10 +22,13 @@ func (t *SentimentService) Analyze(request AnalyzeRequest) (*AnalyzeResponse, er
 }
 
 type AnalyzeRequest struct {
+	// The language. Defaults to english.
 	Lang string `json:"lang"`
+	// The text to analyze
 	Text string `json:"text"`
 }
 
 type AnalyzeResponse struct {
+	// The score of the text {positive is 1, negative is 0}
 	Score float64 `json:"score"`
 }

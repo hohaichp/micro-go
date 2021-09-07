@@ -22,12 +22,18 @@ func (t *EmailService) Send(request SendRequest) (*SendResponse, error) {
 }
 
 type SendRequest struct {
-	From     string `json:"from"`
+	// the display name of the sender
+	From string `json:"from"`
+	// the html body
 	HtmlBody string `json:"htmlBody"`
-	ReplyTo  string `json:"replyTo"`
-	Subject  string `json:"subject"`
+	// an optional reply to email address
+	ReplyTo string `json:"replyTo"`
+	// the email subject
+	Subject string `json:"subject"`
+	// the text body
 	TextBody string `json:"textBody"`
-	To       string `json:"to"`
+	// the email address of the recipient
+	To string `json:"to"`
 }
 
 type SendResponse struct {

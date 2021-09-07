@@ -32,36 +32,53 @@ func (t *PostcodeService) Validate(request ValidateRequest) (*ValidateResponse, 
 }
 
 type LookupRequest struct {
+	// UK postcode e.g SW1A 2AA
 	Postcode string `json:"postcode"`
 }
 
 type LookupResponse struct {
-	Country   string  `json:"country"`
-	District  string  `json:"district"`
-	Latitude  float64 `json:"latitude"`
+	// country e.g United Kingdom
+	Country string `json:"country"`
+	// e.g Westminster
+	District string `json:"district"`
+	// e.g 51.50354
+	Latitude float64 `json:"latitude"`
+	// e.g -0.127695
 	Longitude float64 `json:"longitude"`
-	Postcode  string  `json:"postcode"`
-	Region    string  `json:"region"`
-	Ward      string  `json:"ward"`
+	// UK postcode e.g SW1A 2AA
+	Postcode string `json:"postcode"`
+	// related region e.g London
+	Region string `json:"region"`
+	// e.g St James's
+	Ward string `json:"ward"`
 }
 
 type RandomRequest struct {
 }
 
 type RandomResponse struct {
-	Country   string  `json:"country"`
-	District  string  `json:"district"`
-	Latitude  float64 `json:"latitude"`
+	// country e.g United Kingdom
+	Country string `json:"country"`
+	// e.g Westminster
+	District string `json:"district"`
+	// e.g 51.50354
+	Latitude float64 `json:"latitude"`
+	// e.g -0.127695
 	Longitude float64 `json:"longitude"`
-	Postcode  string  `json:"postcode"`
-	Region    string  `json:"region"`
-	Ward      string  `json:"ward"`
+	// UK postcode e.g SW1A 2AA
+	Postcode string `json:"postcode"`
+	// related region e.g London
+	Region string `json:"region"`
+	// e.g St James's
+	Ward string `json:"ward"`
 }
 
 type ValidateRequest struct {
+	// UK postcode e.g SW1A 2AA
 	Postcode string `json:"postcode"`
 }
 
 type ValidateResponse struct {
+	// Is the postcode valid (true) or not (false)
 	Valid bool `json:"valid"`
 }

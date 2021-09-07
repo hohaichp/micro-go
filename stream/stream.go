@@ -27,18 +27,23 @@ func (t *StreamService) Subscribe(request SubscribeRequest) (*SubscribeResponse,
 }
 
 type PublishRequest struct {
+	// The json message to publish
 	Message map[string]interface{} `json:"message"`
-	Topic   string                 `json:"topic"`
+	// The topic to publish to
+	Topic string `json:"topic"`
 }
 
 type PublishResponse struct {
 }
 
 type SubscribeRequest struct {
+	// The topic to subscribe to
 	Topic string `json:"topic"`
 }
 
 type SubscribeResponse struct {
+	// The next json message on the topic
 	Message map[string]interface{} `json:"message"`
-	Topic   string                 `json:"topic"`
+	// The topic subscribed to
+	Topic string `json:"topic"`
 }

@@ -37,54 +37,80 @@ func (t *CryptoService) Quote(request QuoteRequest) (*QuoteResponse, error) {
 }
 
 type Article struct {
-	Date        string `json:"date"`
+	// the date published
+	Date string `json:"date"`
+	// its description
 	Description string `json:"description"`
-	Source      string `json:"source"`
-	Title       string `json:"title"`
-	Url         string `json:"url"`
+	// the source
+	Source string `json:"source"`
+	// title of the article
+	Title string `json:"title"`
+	// the source url
+	Url string `json:"url"`
 }
 
 type HistoryRequest struct {
+	// the crypto symbol e.g BTCUSD
 	Symbol string `json:"symbol"`
 }
 
 type HistoryResponse struct {
-	Close  float64 `json:"close"`
-	Date   string  `json:"date"`
-	High   float64 `json:"high"`
-	Low    float64 `json:"low"`
-	Open   float64 `json:"open"`
-	Symbol string  `json:"symbol"`
+	// the close price
+	Close float64 `json:"close"`
+	// the date
+	Date string `json:"date"`
+	// the peak price
+	High float64 `json:"high"`
+	// the low price
+	Low float64 `json:"low"`
+	// the open price
+	Open float64 `json:"open"`
+	// the crypto symbol
+	Symbol string `json:"symbol"`
+	// the volume
 	Volume float64 `json:"volume"`
 }
 
 type NewsRequest struct {
+	// cryptocurrency ticker to request news for e.g BTC
 	Symbol string `json:"symbol"`
 }
 
 type NewsResponse struct {
+	// list of articles
 	Articles []Article `json:"articles"`
-	Symbol   string    `json:"symbol"`
+	// symbol requested for
+	Symbol string `json:"symbol"`
 }
 
 type PriceRequest struct {
+	// the crypto symbol e.g BTCUSD
 	Symbol string `json:"symbol"`
 }
 
 type PriceResponse struct {
-	Price  float64 `json:"price"`
-	Symbol string  `json:"symbol"`
+	// the last price
+	Price float64 `json:"price"`
+	// the crypto symbol e.g BTCUSD
+	Symbol string `json:"symbol"`
 }
 
 type QuoteRequest struct {
+	// the crypto symbol e.g BTCUSD
 	Symbol string `json:"symbol"`
 }
 
 type QuoteResponse struct {
-	AskPrice  float64 `json:"askPrice"`
-	AskSize   float64 `json:"askSize"`
-	BidPrice  float64 `json:"bidPrice"`
-	BidSize   float64 `json:"bidSize"`
-	Symbol    string  `json:"symbol"`
-	Timestamp string  `json:"timestamp"`
+	// the asking price
+	AskPrice float64 `json:"askPrice"`
+	// the ask size
+	AskSize float64 `json:"askSize"`
+	// the bidding price
+	BidPrice float64 `json:"bidPrice"`
+	// the bid size
+	BidSize float64 `json:"bidSize"`
+	// the crypto symbol
+	Symbol string `json:"symbol"`
+	// the UTC timestamp of the quote
+	Timestamp string `json:"timestamp"`
 }
