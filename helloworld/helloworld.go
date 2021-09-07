@@ -16,11 +16,13 @@ type HelloworldService struct {
 	client *client.Client
 }
 
+// Call returns a personalised "Hello $name" response
 func (t *HelloworldService) Call(request CallRequest) (*CallResponse, error) {
 	rsp := &CallResponse{}
 	return rsp, t.client.Call("helloworld", "Call", request, rsp)
 }
 
+// Stream returns a stream of "Hello $name" responses
 func (t *HelloworldService) Stream(request StreamRequest) (*StreamResponse, error) {
 	rsp := &StreamResponse{}
 	return rsp, t.client.Call("helloworld", "Stream", request, rsp)

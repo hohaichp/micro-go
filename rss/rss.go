@@ -16,21 +16,25 @@ type RssService struct {
 	client *client.Client
 }
 
+// Add a new RSS feed with a name, url, and category
 func (t *RssService) Add(request AddRequest) (*AddResponse, error) {
 	rsp := &AddResponse{}
 	return rsp, t.client.Call("rss", "Add", request, rsp)
 }
 
+// Get an RSS feed by name. If no name is given, all feeds are returned. Default limit is 25 entries.
 func (t *RssService) Feed(request FeedRequest) (*FeedResponse, error) {
 	rsp := &FeedResponse{}
 	return rsp, t.client.Call("rss", "Feed", request, rsp)
 }
 
+// List the saved RSS fields
 func (t *RssService) List(request ListRequest) (*ListResponse, error) {
 	rsp := &ListResponse{}
 	return rsp, t.client.Call("rss", "List", request, rsp)
 }
 
+// Remove an RSS feed by name
 func (t *RssService) Remove(request RemoveRequest) (*RemoveResponse, error) {
 	rsp := &RemoveResponse{}
 	return rsp, t.client.Call("rss", "Remove", request, rsp)

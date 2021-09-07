@@ -16,6 +16,7 @@ type SmsService struct {
 	client *client.Client
 }
 
+// Send an SMS.
 func (t *SmsService) Send(request SendRequest) (*SendResponse, error) {
 	rsp := &SendResponse{}
 	return rsp, t.client.Call("sms", "Send", request, rsp)

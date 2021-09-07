@@ -16,11 +16,13 @@ type StreamService struct {
 	client *client.Client
 }
 
+// Publish a message to the stream. Specify a topic to group messages for a specific topic.
 func (t *StreamService) Publish(request PublishRequest) (*PublishResponse, error) {
 	rsp := &PublishResponse{}
 	return rsp, t.client.Call("stream", "Publish", request, rsp)
 }
 
+// Subscribe to messages for a given topic.
 func (t *StreamService) Subscribe(request SubscribeRequest) (*SubscribeResponse, error) {
 	rsp := &SubscribeResponse{}
 	return rsp, t.client.Call("stream", "Subscribe", request, rsp)

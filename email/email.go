@@ -16,6 +16,7 @@ type EmailService struct {
 	client *client.Client
 }
 
+// Send an email by passing in from, to, subject, and a text or html body
 func (t *EmailService) Send(request SendRequest) (*SendResponse, error) {
 	rsp := &SendResponse{}
 	return rsp, t.client.Call("email", "Send", request, rsp)

@@ -16,6 +16,7 @@ type AnswerService struct {
 	client *client.Client
 }
 
+// Ask a question and receive an instant answer
 func (t *AnswerService) Question(request QuestionRequest) (*QuestionResponse, error) {
 	rsp := &QuestionResponse{}
 	return rsp, t.client.Call("answer", "Question", request, rsp)
